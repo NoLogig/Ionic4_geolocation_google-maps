@@ -3,7 +3,7 @@
     <name>ionic4-beta-geo-gmaps</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.2.103:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -89,6 +89,5 @@
         <variable name="API_KEY_FOR_ANDROID" value="API_KEY_FOR_ANDROID" />
         <variable name="API_KEY_FOR_IOS" value="API_KEY_FOR_IOS" />
     </plugin>
-    <allow-navigation href="http://192.168.2.103:8100" sessionid="16acfe60" />
-    <engine name="browser" spec="5.0.4" />
+    <engine name="browser" spec="~5.0.4" />
 </widget>
