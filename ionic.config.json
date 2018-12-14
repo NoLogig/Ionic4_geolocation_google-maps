@@ -1,5 +1,7 @@
 {
-  "name": "ion4-beta-geo-gmap",
-  "integrations": {},
+  "name": "ionic4-beta-geo-gmaps",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
