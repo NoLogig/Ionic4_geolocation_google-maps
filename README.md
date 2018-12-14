@@ -30,11 +30,12 @@ $ ionic start beta-ionic4-geo-gmap sidemenu --cordova --type=angular --no-link
 ```
 
 It installs dependencies for ionic and sets up the project.
-| Command options  | Description                                                 |
-|------------------|-------------------------------------------------------------|
-| sidemenu         | Create a sidemenu starter template app.                     |
-| --cordova	       | Include Cordova integration                                 |
-| --no-link   	   | Do not ask to connect the app with the Ionic Dashboard.     |
+
+| Command options  | Description                                                                                  |
+|------------------|----------------------------------------------------------------------------------------------|
+| sidemenu         | Create a sidemenu starter template app.                                                      |
+| --cordova	       | Include Cordova integration                                                                  |
+| --no-link   	   | Do not ask to connect the app with the Ionic Dashboard.                                      |
 | --type=angular   | Uses the power of the modern Web,Angular CLI and Angular Router. (*currently beta version!*) |
 
 #### Change into app directory
