@@ -3,7 +3,7 @@
 [![Dependencies](https://img.shields.io/david/NoLogig/Ionic4_geolocation_google-maps.svg)](https://david-dm.org/NoLogig/Ionic4_geolocation_google-maps) [![License](https://img.shields.io/github/license/NoLogig/Ionic4_geolocation_google-maps.svg)](https://choosealicense.com/licenses/mit/)
 
 |         Prerequisites                                        | Version | Sample   |
-|--------------------------------------------------------------|--------:|----|
+|--------------------------------------------------------------|--------:|
 |  [npm](https://nodejs.org/en/)                               |   6.1.0 | ![Sample](https://github.com/NoLogig/Ionic4_geolocation_google-maps/blob/master/src/assets/ionic4_beta-geo-gmaps.png)
 |  [Ionic CLI](https://ionicframework.com/getting-started#cli) |   4.5.0 |    
 |  [Angular CLI](https://cli.angular.io/)                      |   7.1.2 |    
