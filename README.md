@@ -8,7 +8,8 @@
 |--------------------------------------------------------------|--------:|
 |  [npm](https://nodejs.org/en/)                               |   6.1.0 |
 |  [Ionic CLI](https://ionicframework.com/getting-started#cli) |   4.5.0 |
-|  [Angular CLI](https://cli.angular.io/)                      |   7.1.2 | ![Sample](https://github.com/NoLogig/Ionic4_geolocation_google-maps/blob/master/src/assets/ionic4_beta-geo-gmaps.png)
+|  [Angular CLI](https://cli.angular.io/)                      |   7.1.2 |
+![Sample](https://github.com/NoLogig/Ionic4_geolocation_google-maps/blob/master/src/assets/ionic4_beta-geo-gmaps.png)
 
 ## Create a Ionic app.
 
