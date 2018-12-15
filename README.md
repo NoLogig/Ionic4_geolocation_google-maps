@@ -1,9 +1,6 @@
-# Angular 7, Cordova & Ionic 4 Native Geolocation/Google-Maps plugins (Beta)
-[![Dependencies](https://img.shields.io/david/NoLogig/Ionic4_geolocation_google-maps.svg)](https://david-dm.org/NoLogig/Ionic4_geolocation_google-maps)
-[![License](https://img.shields.io/github/license/NoLogig/Ionic4_geolocation_google-maps.svg)](https://choosealicense.com/licenses/mit/)
+# Angular 7, Cordova & Ionic 4 (Beta) Native Geolocation/Google-Maps plugins
 
-## Sample Prev.
-![Sample](https://github.com/NoLogig/Ionic4_geolocation_google-maps/blob/master/src/assets/ionic4_beta-geo-gmaps.png)
+[![Dependencies](https://img.shields.io/david/NoLogig/Ionic4_geolocation_google-maps.svg)](https://david-dm.org/NoLogig/Ionic4_geolocation_google-maps) [![License](https://img.shields.io/github/license/NoLogig/Ionic4_geolocation_google-maps.svg)](https://choosealicense.com/licenses/mit/)
 
 ## Prerequisites
 
@@ -11,57 +8,45 @@
 |--------------------------------------------------------------|--------:|
 |  [npm](https://nodejs.org/en/)                               |   6.1.0 |
 |  [Ionic CLI](https://ionicframework.com/getting-started#cli) |   4.5.0 |
-|  [Angular CLI](https://cli.angular.io/)                      |   7.1.2 |
+|  [Angular CLI](https://cli.angular.io/)                      |   7.1.2 | ![Sample](https://github.com/NoLogig/Ionic4_geolocation_google-maps/blob/master/src/assets/ionic4_beta-geo-gmaps.png)
 
-## Development server
-
-Run for a dev server.
-```bash
-$ ionic cordova run browser -l
-``` 
-Navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
-
-## Getting Started
-
-### Create a Ionic app.
+## Create a Ionic app.
 
 ```bash
 $ ionic start beta-ionic4-geo-gmap sidemenu --cordova --type=angular --no-link
 ```
-
 It installs dependencies for ionic and sets up the project.
 
-| Command options  | Description                                                                                  |
-|------------------|----------------------------------------------------------------------------------------------|
-| sidemenu         | Create a sidemenu starter template app.                                                      |
-| --cordova	       | Include Cordova integration                                                                  |
-| --no-link   	   | Do not ask to connect the app with the Ionic Dashboard.                                      |
+| Command options  | Description                                                 |
+|------------------|-------------------------------------------------------------|
+| sidemenu         | Create a sidemenu starter template app.                     |
+| --cordova	       | Include Cordova integration                                 |
+| --no-link   	   | Do not ask to connect the app with the Ionic Dashboard.     |
 | --type=angular   | Uses the power of the modern Web,Angular CLI and Angular Router. (*currently beta version!*) |
 
-#### Change into app directory
+### Change into app directory
+
 ```bash
 $ cd beta-ionic4-geo-gmap
 ```
 
-### Install Cordova and Ionic Native plugins:
+## Install Cordova and Ionic Native plugins:
 
-#### Install Ionic Native plugins: Core, Geolocation & Google-Maps
+### Install Ionic Native plugins: Core, Geolocation & Google-Maps
 
 ```bash
 $ npm install --save @ionic-native/core@beta 
                      @ionic-native/google-maps@beta 
                      @ionic-native/geolocation@beta
 ```
-___
 
-#### Add plugin: Geolocation
+### Add plugin: Geolocation
 
 ```bash
 $ ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate"
 ```
-___
 
-#### Add plugin: Google-Maps
+### Add plugin: Google-Maps
 
 In order to use this plugin, you need to generate API keys at the Google Developers Console.
 
@@ -69,11 +54,10 @@ In order to use this plugin, you need to generate API keys at the Google Develop
 $ ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="API_KEY_FOR_ANDROID" 
                                                      --variable API_KEY_FOR_IOS="API_KEY_FOR_IOS"
 ```
-___
 
-### Use
+## Use
 
-#### Generate Component to display Google-Maps & interact Geolocation
+### Generate Component to display Google-Maps & Geolocation
 
 ```bash
 $ ionic generate page map
@@ -88,10 +72,10 @@ UPDATE src/app/app-routing.module.ts (684 bytes)
 [OK] Generated page!
 ```
 
-#### Create navigation to map page
+### Create navigation to map page
+
+#### ./src/app/app.component.ts
 ```ts
-// ./src/app/app.component.ts
-...
 export class AppComponent {
   ...
   public appPages = [
@@ -102,14 +86,12 @@ export class AppComponent {
       icon: 'map'
     }
   ];
-  ...
 ```
 
-#### Get Geolocation data & show position in Google-Maps
+### Get Geolocation data & show position in Google-Maps
 
+#### ./src/app/map/map.component.ts
 ```ts
-// ./src/app/map/map.component.ts
-
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -131,20 +113,15 @@ export class MapPage implements OnInit {
   constructor(private geo: Geolocation, private platform: Platform) { }
 
   async ngOnInit() {
-
     this.map = this.gmap.nativeElement;
-
     await this.platform.ready().then(() => {
       this.initMap();
     });
   }
 
-  initMap() {
-    this.map = GoogleMaps.create(this.map);
-  }
+  initMap() { this.map = GoogleMaps.create(this.map); }
 
   locateMe() {
-
     this.geo.getCurrentPosition().then(resp => {
       console.log('Latitude: %f \n Longitude %f \n', resp.coords.latitude, resp.coords.longitude);
       this.coords = resp.coords;
@@ -162,13 +139,11 @@ export class MapPage implements OnInit {
     // Stop watching
     // watchGMap.unsubscribe();
   }
-
 }
 ```
 
+#### ./src/app/map/map.component.html
 ```html
-<!-- ./src/app/map/map.component.html -->
-
 <ion-header>
   <ion-toolbar>
     <ion-title>map</ion-title>
@@ -177,7 +152,6 @@ export class MapPage implements OnInit {
 
 <ion-content padding color="dark">
   <ion-card class="g-card">
-
     <div class="gmapstyle" #geoMap></div>
 
     <ion-card-header color="dark">
@@ -186,8 +160,7 @@ export class MapPage implements OnInit {
     </ion-card-header>
 
     <ion-card-content>
-      <p>Now that your app has been created, you'll want to start building out features and components. Check out some
-        of the resources below for next steps.</p>
+      <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
     </ion-card-content>
 
     <ion-button expand="full" (click)="locateMe()" color="light">Locate Me</ion-button>
@@ -197,22 +170,21 @@ export class MapPage implements OnInit {
 ```
 
 It's important to set `width` & `height` props for the map. (least 100x100)
-```scss
-// ./src/app/map/map.component.scss
 
+#### /src/app/map/map.component.scss
+```scss
 .g-card ion-img {
     max-height: 35vh;
     overflow: hidden;
 }
-
 .gmapstyle {
     width: 100%;
     height: 300px;
 }
 ```
 
-#### Before use this demo...
-Replace `API key` in `config.xml` and `package.json` files with your API keys, to ensure that Google-Maps works.
+### Before use this demo...
+Replace `API KEY` in `config.xml` and `package.json` files with your API keys, to ensure that Google-Maps works.
 
 ## Troubleshooting
 
@@ -282,9 +254,9 @@ ___
 
 ## Notes
 
-#### Install a Plugin
+### Install a Plugin
 Install the Ionic Native package for each plugin you want to add.
-For example, if you want to install the Camera plugin, you will need to run the following command:
+For example, if you want to install the Geolocation plugin, you will need to run the following command:
 ```bash
 $ npm install @ionic-native/geolocation --save
 ```
@@ -295,7 +267,7 @@ $ ionic cordova plugin add cordova-plugin-geolocation
 
 All package names are documented on the plugin’s documentation. It is recommended to follow the installation instructions on each plugin’s documentation, as some plugins require additional steps to fully install.
 
-#### Add Plugins to Your App's Module
+### Add Plugins to app Module
 After installing a plugin’s package, add it to your app’s NgModule.
 
 ```ts
@@ -312,10 +284,9 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   ...
 })
 export class AppModule { }
-
 ```
 
-**Usage**
+### Use Plugins
 ```ts
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 ...
@@ -329,38 +300,28 @@ this.geo.getCurrentPosition().then(resp => {
 });
 ```
 
-
-
-
-
-#### Ionic Native
+### Ionic Native
 Ionic Native is a curated set of community-created wrappers for Cordova plugins that makes adding native functionality to an Ionic app easy. Ionic Native wraps Cordova plugins in a Promise or Observable, providing a common interface for all plugins, and dealing with Angular's change detection.
 
 It is largely a set of community maintained plugins, and while the community is quick to find and fix issues, certain plugins may not function properly. For teams that require dedicated Native plugin support, the Ionic team has options available. Please contact them for more information.
 
-
-#### Usage with Angular 
+### Usage with Angular 
 To use a plugin, import and add the plugin injectable to a @NgModule. For Angular, the import path should end with /ngx.
 
+#### ./src/app/app.module.ts
 ```ts
-// ./src/app/app.module.ts
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-
 ...
 @NgModule({
   ...
   providers: [
-    ...
     Geolocation
-    ...
   ]
-  ...
 })
 export class AppModule { }
 ```
 
 After the plugin has been declared, it can be imported and injected like any other service.
-
 
 ```ts
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -372,26 +333,18 @@ export class MyComponent {
   constructor(private geolocation: Geolocation, private platform: Platform) {
 
     platform.ready().then(() => {
-
       // get position
       geolocation.getCurrentPosition().then(pos => {
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
       });
-
-
       // watch position
       const watch = geolocation.watchPosition().subscribe(pos => {
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
         this.position = pos;
       });
-
       // to stop watching
       watch.unsubscribe();
     });
-
   }
-
 }
 ```
-
-
